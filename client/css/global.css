@@ -1,0 +1,337 @@
+/* =====================================================
+   BUGWAR 2026 - GLOBAL THEME
+   Author : OpenAI
+===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+
+/* ==========================
+        COLOR VARIABLES
+========================== */
+
+:root{
+
+    --bg:#050816;
+    --bg2:#0b1025;
+    --card:#10182F;
+    --card2:#151f3d;
+
+    --primary:#4F7CFF;
+    --secondary:#7B61FF;
+    --success:#22C55E;
+    --danger:#EF4444;
+    --warning:#F59E0B;
+
+    --white:#ffffff;
+    --text:#d5d9e8;
+    --muted:#94a3b8;
+
+    --border:rgba(255,255,255,.08);
+
+    --radius:18px;
+
+    --shadow:
+    0 10px 30px rgba(0,0,0,.45);
+
+    --transition:.35s ease;
+
+}
+
+/* ==========================
+        RESET
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:
+    radial-gradient(circle at top left,#1b2c5f 0%,transparent 35%),
+    radial-gradient(circle at bottom right,#3b1460 0%,transparent 35%),
+    var(--bg);
+
+    color:var(--white);
+
+    overflow-x:hidden;
+
+}
+
+/* ==========================
+      SCROLLBAR
+========================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#08101f;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--primary);
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#6790ff;
+
+}
+
+/* ==========================
+      LINKS
+========================== */
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+/* ==========================
+      IMAGES
+========================== */
+
+img{
+
+    max-width:100%;
+
+    display:block;
+
+}
+
+/* ==========================
+      CONTAINER
+========================== */
+
+.container{
+
+    width:90%;
+
+    max-width:1400px;
+
+    margin:auto;
+
+}
+
+/* ==========================
+      HEADINGS
+========================== */
+
+h1,h2,h3{
+
+    font-family:'Orbitron',sans-serif;
+
+    letter-spacing:1px;
+
+}
+
+p{
+
+    color:var(--text);
+
+    line-height:1.7;
+
+}
+
+/* ==========================
+      GLASS CARD
+========================== */
+
+.glass{
+
+    background:rgba(17,25,40,.75);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+}
+
+/* ==========================
+      BUTTONS
+========================== */
+
+.btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    padding:14px 30px;
+
+    border:none;
+
+    outline:none;
+
+    cursor:pointer;
+
+    border-radius:14px;
+
+    font-weight:600;
+
+    transition:var(--transition);
+
+    font-size:15px;
+
+}
+
+/* Primary */
+
+.btn-primary{
+
+    background:linear-gradient(
+    135deg,
+    var(--primary),
+    var(--secondary)
+    );
+
+    color:#fff;
+
+    box-shadow:
+    0 0 25px rgba(79,124,255,.35);
+
+}
+
+.btn-primary:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 0 35px rgba(79,124,255,.55);
+
+}
+
+/* Green */
+
+.btn-success{
+
+    background:linear-gradient(
+    135deg,
+    #16a34a,
+    #22c55e
+    );
+
+    color:white;
+
+}
+
+.btn-success:hover{
+
+    transform:translateY(-3px);
+
+}
+
+/* Outline */
+
+.btn-outline{
+
+    background:transparent;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    color:white;
+
+}
+
+.btn-outline:hover{
+
+    border-color:var(--primary);
+
+    background:rgba(79,124,255,.1);
+
+}
+
+/* ==========================
+      SECTION
+========================== */
+
+section{
+
+    padding:90px 0;
+
+}
+
+/* ==========================
+      TITLE
+========================== */
+
+.section-title{
+
+    text-align:center;
+
+    margin-bottom:50px;
+
+}
+
+.section-title h2{
+
+    font-size:40px;
+
+}
+
+.section-title p{
+
+    margin-top:15px;
+
+}
+
+/* ==========================
+      ANIMATIONS
+========================== */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.fade-up{
+
+    animation:fadeUp .8s ease forwards;
+
+}

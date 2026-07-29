@@ -1,0 +1,256 @@
+/* =====================================================
+   BUGWAR 2026 — SHARED THEME
+   Used by every page EXCEPT index.html
+   (index.html keeps its own global.css / style.css)
+===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;900&family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+
+:root{
+    --bg:#050816;
+    --bg2:#0b1025;
+    --card:#10182F;
+    --card2:#151f3d;
+
+    --primary:#4F7CFF;
+    --secondary:#7B61FF;
+    --success:#22C55E;
+    --danger:#EF4444;
+    --warning:#F59E0B;
+
+    --white:#ffffff;
+    --text:#d5d9e8;
+    --muted:#94a3b8;
+
+    --border:rgba(255,255,255,.08);
+    --radius:18px;
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+    --transition:.3s ease;
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+
+html{ scroll-behavior:smooth; }
+
+body{
+    font-family:'Poppins',sans-serif;
+    color:var(--white);
+    min-height:100vh;
+    overflow-x:hidden;
+    background:
+        radial-gradient(circle at 15% 10%, rgba(79,124,255,.18), transparent 40%),
+        radial-gradient(circle at 85% 90%, rgba(123,97,255,.16), transparent 45%),
+        var(--bg);
+}
+
+::-webkit-scrollbar{ width:9px; }
+::-webkit-scrollbar-track{ background:var(--bg2); }
+::-webkit-scrollbar-thumb{ background:var(--primary); border-radius:10px; }
+
+a{ text-decoration:none; color:inherit; }
+button, input, select, textarea{ font-family:inherit; }
+
+/* ==========================
+   ANIMATED CIRCUIT BACKGROUND
+   (fixed layer, sits behind content)
+========================== */
+
+.bw-bg{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    overflow:hidden;
+    pointer-events:none;
+}
+
+.bw-bg::before{
+    content:"";
+    position:absolute;
+    inset:-10%;
+    background-image:
+        linear-gradient(rgba(79,124,255,.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(79,124,255,.07) 1px, transparent 1px);
+    background-size:42px 42px;
+    animation:bw-grid-drift 26s linear infinite;
+}
+
+@keyframes bw-grid-drift{
+    0%{ transform:translate(0,0); }
+    100%{ transform:translate(42px,42px); }
+}
+
+.bw-bg span{
+    position:absolute;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:var(--primary);
+    box-shadow:0 0 14px 4px rgba(79,124,255,.55);
+    opacity:.65;
+    animation:bw-float 9s ease-in-out infinite;
+}
+
+.bw-bg span:nth-child(1){ top:12%; left:8%;  animation-delay:0s;  background:var(--primary);}
+.bw-bg span:nth-child(2){ top:70%; left:18%; animation-delay:1.4s;background:var(--secondary);}
+.bw-bg span:nth-child(3){ top:30%; left:82%; animation-delay:2.6s;background:var(--success);}
+.bw-bg span:nth-child(4){ top:85%; left:75%; animation-delay:.7s; background:var(--primary);}
+.bw-bg span:nth-child(5){ top:50%; left:50%; animation-delay:3.5s;background:var(--secondary);}
+
+@keyframes bw-float{
+    0%,100%{ transform:translateY(0) scale(1); opacity:.55; }
+    50%{ transform:translateY(-30px) scale(1.3); opacity:.95; }
+}
+
+/* ==========================
+   GLASS SURFACES
+========================== */
+
+.bw-glass{
+    background:linear-gradient(155deg, rgba(21,31,61,.85), rgba(16,24,47,.85));
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    backdrop-filter:blur(14px);
+}
+
+/* ==========================
+   BUTTONS
+========================== */
+
+.bw-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:.5rem;
+    padding:.85rem 1.7rem;
+    border-radius:12px;
+    border:none;
+    font-weight:600;
+    font-size:.95rem;
+    cursor:pointer;
+    transition:var(--transition);
+    white-space:nowrap;
+}
+
+.bw-btn-primary{
+    background:linear-gradient(135deg, var(--primary), var(--secondary));
+    color:#fff;
+    box-shadow:0 8px 22px rgba(79,124,255,.35);
+}
+.bw-btn-primary:hover{ transform:translateY(-2px); box-shadow:0 12px 28px rgba(79,124,255,.5); }
+.bw-btn-primary:disabled{ opacity:.5; cursor:not-allowed; transform:none; }
+
+.bw-btn-ghost{
+    background:rgba(255,255,255,.05);
+    border:1px solid var(--border);
+    color:var(--text);
+}
+.bw-btn-ghost:hover{ background:rgba(255,255,255,.1); }
+
+.bw-btn-danger{
+    background:linear-gradient(135deg,#ef4444,#b91c1c);
+    color:#fff;
+}
+.bw-btn-danger:hover{ transform:translateY(-2px); }
+
+.bw-btn-success{
+    background:linear-gradient(135deg,#22c55e,#15803d);
+    color:#fff;
+}
+
+.bw-btn:disabled{ opacity:.45; cursor:not-allowed; }
+
+/* ==========================
+   BACK LINK
+========================== */
+
+.bw-back{
+    display:inline-flex;
+    align-items:center;
+    gap:.5rem;
+    color:var(--muted);
+    font-weight:500;
+    font-size:.9rem;
+    margin-bottom:1.4rem;
+    transition:var(--transition);
+}
+.bw-back:hover{ color:var(--white); transform:translateX(-3px); }
+
+/* ==========================
+   BADGES / TAGS
+========================== */
+
+.bw-tag{
+    display:inline-block;
+    padding:.3rem .9rem;
+    border-radius:999px;
+    font-size:.72rem;
+    font-weight:700;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    background:rgba(79,124,255,.15);
+    color:#9db4ff;
+    border:1px solid rgba(79,124,255,.35);
+}
+
+/* ==========================
+   FORM ELEMENTS
+========================== */
+
+.bw-field{ margin-bottom:1.15rem; }
+
+.bw-field label{
+    display:block;
+    font-size:.82rem;
+    font-weight:600;
+    color:var(--muted);
+    margin-bottom:.45rem;
+    letter-spacing:.02em;
+}
+
+.bw-field input[type="text"],
+.bw-field input[type="password"],
+.bw-field input[type="email"],
+.bw-field select,
+.bw-field textarea{
+    width:100%;
+    padding:.85rem 1rem;
+    border-radius:12px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.04);
+    color:var(--white);
+    font-size:.95rem;
+    transition:var(--transition);
+}
+
+.bw-field input:focus,
+.bw-field select:focus,
+.bw-field textarea:focus{
+    outline:none;
+    border-color:var(--primary);
+    box-shadow:0 0 0 3px rgba(79,124,255,.2);
+}
+
+.bw-field input[readonly]{
+    color:var(--muted);
+    background:rgba(255,255,255,.02);
+}
+
+.bw-checkbox{
+    display:flex;
+    align-items:flex-start;
+    gap:.65rem;
+    font-size:.88rem;
+    color:var(--text);
+}
+.bw-checkbox input{ margin-top:.2rem; accent-color:var(--primary); width:16px; height:16px; }
+
+/* ==========================
+   SCROLLBAR-FRIENDLY UTILS
+========================== */
+
+.bw-container{ max-width:1180px; margin:0 auto; padding:0 1.5rem; }
+
+@media (max-width:640px){
+    .bw-container{ padding:0 1rem; }
+}

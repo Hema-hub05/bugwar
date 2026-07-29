@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BugWar | Leaderboard</title>
+
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/leaderboard.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+<body class="lb-body">
+
+<div class="bw-bg" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<div class="lb-wrap">
+
+    <div class="lb-back">
+        <a href="index.html" class="bw-back"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+    </div>
+
+    <div class="lb-header">
+        <h1>🏆 BugWar Leaderboard</h1>
+        <p>Live standings across all three rounds</p>
+    </div>
+
+    <div class="lb-table-wrap bw-glass">
+
+        <table id="leaderboardTable">
+
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Team Name</th>
+                    <th>Round 1</th>
+                    <th>Round 2</th>
+                    <th>Round 3</th>
+                    <th>Total</th>
+                    <th>Time Taken</th>
+                </tr>
+            </thead>
+
+            <tbody></tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<script src="js/leaderboard.js"></script>
+
+</body>
+</html>

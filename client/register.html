@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BugWar | Team Registration</title>
+
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/register.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+<body>
+
+<div class="bw-bg" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<!-- Falling bugs, purely decorative -->
+<div class="bug-field" id="bug-field" aria-hidden="true"></div>
+
+<div class="reg-wrap">
+
+    <div class="reg-shell">
+
+        <!-- LEFT: brand / info panel -->
+        <div class="reg-side">
+
+            <div>
+                <div class="reg-logo">🐞 BUGWAR</div>
+
+                <h2>Team up. Debug fast.<br>Claim the crown.</h2>
+
+                <p>
+                    Register your two-member team for BugWar 2026 and take on
+                    three escalating rounds of live debugging challenges.
+                </p>
+
+                <div class="reg-points">
+
+                    <div class="reg-point">
+                        <i class="fa-solid fa-users"></i>
+                        Exactly 2 members per team
+                    </div>
+
+                    <div class="reg-point">
+                        <i class="fa-solid fa-layer-group"></i>
+                        3 rounds &middot; 10 questions each
+                    </div>
+
+                    <div class="reg-point">
+                        <i class="fa-solid fa-clock"></i>
+                        15 minutes per round
+                    </div>
+
+                    <div class="reg-point">
+                        <i class="fa-solid fa-ranking-star"></i>
+                        Live leaderboard tracking
+                    </div>
+
+                </div>
+            </div>
+
+            <a href="index.html" class="bw-back">
+                <i class="fa-solid fa-arrow-left"></i>
+                Back to Home
+            </a>
+
+        </div>
+
+        <!-- RIGHT: form -->
+        <div class="reg-form-panel">
+
+            <h1>✨ Team Registration</h1>
+            <p>Fill in your details to lock your spot in BugWar 2026.</p>
+
+            <form id="registerForm">
+
+                <div class="bw-field">
+                    <label>Team Name</label>
+                    <input type="text" id="teamName" placeholder="Enter Team Name" required>
+                </div>
+
+                <div class="reg-section-title"><i class="fa-solid fa-user"></i> Member 1</div>
+
+                <div class="two-col">
+
+                    <div class="bw-field">
+                        <label>Full Name</label>
+                        <input type="text" id="member1" placeholder="Full Name" required>
+                    </div>
+
+                    <div class="bw-field">
+                        <label>Roll Number</label>
+                        <input type="text" id="roll1" placeholder="22IT001" required>
+                    </div>
+
+                </div>
+
+                <div class="reg-section-title"><i class="fa-solid fa-user"></i> Member 2</div>
+
+                <div class="two-col">
+
+                    <div class="bw-field">
+                        <label>Full Name</label>
+                        <input type="text" id="member2" placeholder="Full Name" required>
+                    </div>
+
+                    <div class="bw-field">
+                        <label>Roll Number</label>
+                        <input type="text" id="roll2" placeholder="22IT002" required>
+                    </div>
+
+                </div>
+
+                <div class="reg-section-title"><i class="fa-solid fa-building-columns"></i> Department Details</div>
+
+                <div class="two-col">
+
+                    <div class="bw-field">
+                        <label>Department</label>
+                        <select id="department">
+                            <option value="">Select Department</option>
+                            <option>Information Technology</option>
+                            <option>Computer Science</option>
+                            <option>Artificial Intelligence</option>
+                        </select>
+                    </div>
+
+                    <div class="bw-field">
+                        <label>Year</label>
+                        <select id="year">
+                            <option value="">Select Year</option>
+                            <option>I Year</option>
+                            <option>II Year</option>
+                            <option>III Year</option>
+                            <option>IV Year</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <label class="bw-checkbox">
+                    <input type="checkbox" id="agree" required>
+                    I agree to the BugWar Rules
+                </label>
+
+                <button type="submit" class="bw-btn bw-btn-primary reg-submit">
+                    🚀 Register Team
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    // Spawn a field of small bugs that tumble down behind the form.
+    (function buildFallingBugs() {
+        const field = document.getElementById('bug-field');
+        const COUNT = 16;
+
+        const bugSVG = `
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="16" cy="19" rx="7" ry="9" fill="#4c8dff"/>
+                <ellipse cx="16" cy="10" rx="4.2" ry="4.2" fill="#bcd6ff"/>
+                <line x1="16" y1="12" x2="16" y2="26" stroke="#1f4cff" stroke-width="1.4"/>
+                <line x1="9" y1="14" x2="4" y2="10" stroke="#1f4cff" stroke-width="1.6" stroke-linecap="round"/>
+                <line x1="23" y1="14" x2="28" y2="10" stroke="#1f4cff" stroke-width="1.6" stroke-linecap="round"/>
+                <line x1="8" y1="20" x2="2" y2="20" stroke="#1f4cff" stroke-width="1.6" stroke-linecap="round"/>
+                <line x1="24" y1="20" x2="30" y2="20" stroke="#1f4cff" stroke-width="1.6" stroke-linecap="round"/>
+                <line x1="9" y1="26" x2="4" y2="30" stroke="#1f4cff" stroke-width="1.6" stroke-linecap="round"/>
+                <line x1="23" y1="26" x2="28" y2="30" stroke="#1f4cff" stroke-width="1.6" stroke-linecap="round"/>
+                <circle cx="14" cy="9" r="0.9" fill="#070d1b"/>
+                <circle cx="18" cy="9" r="0.9" fill="#070d1b"/>
+            </svg>`;
+
+        for (let i = 0; i < COUNT; i++) {
+            const bug = document.createElement('div');
+            bug.className = 'falling-bug';
+
+            const size = Math.random() * 16 + 12;
+            const fallDuration = Math.random() * 8 + 9;
+            const tumbleDuration = Math.random() * 3 + 2;
+            const drift = (Math.random() * 140 - 70).toFixed(0) + 'px';
+            const delay = (Math.random() * 12).toFixed(2) + 's';
+
+            bug.style.left = Math.random() * 100 + '%';
+            bug.style.width = size + 'px';
+            bug.style.height = size + 'px';
+            bug.style.setProperty('--drift', drift);
+            bug.style.animationDuration = fallDuration + 's';
+            bug.style.animationDelay = delay;
+
+            bug.innerHTML = bugSVG;
+            bug.querySelector('svg').style.animationDuration = tumbleDuration + 's';
+
+            field.appendChild(bug);
+        }
+    })();
+</script>
+
+<script src="js/register.js"></script>
+
+</body>
+</html>

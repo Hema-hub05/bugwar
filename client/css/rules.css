@@ -1,0 +1,90 @@
+/* =====================================================
+   BUGWAR 2026 — RULES PAGE
+===================================================== */
+
+.rules-wrap{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:3rem 1.5rem;
+}
+
+.rules-card{
+    width:100%;
+    max-width:720px;
+    padding:2.6rem 2.6rem 2.2rem;
+}
+
+.rules-card h1{
+    font-size:1.7rem;
+    margin-bottom:.4rem;
+}
+
+.rules-card > p.lead{
+    color:var(--muted);
+    font-size:.92rem;
+    margin-bottom:1.8rem;
+}
+
+.rules-list{
+    display:flex;
+    flex-direction:column;
+    gap:.85rem;
+    margin-bottom:1.8rem;
+}
+
+.rule{
+    display:flex;
+    align-items:center;
+    gap:1rem;
+    padding:.95rem 1.1rem;
+    background:rgba(255,255,255,.04);
+    border:1px solid var(--border);
+    border-radius:14px;
+    font-size:.92rem;
+    color:var(--text);
+    transition:var(--transition);
+}
+
+.rule:hover{
+    background:rgba(79,124,255,.08);
+    border-color:rgba(79,124,255,.3);
+    transform:translateX(4px);
+}
+
+.rule i{
+    width:38px;
+    height:38px;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:10px;
+    background:rgba(79,124,255,.15);
+    color:#9db4ff;
+    font-size:1rem;
+}
+
+.rule strong{ color:#fff; }
+
+.agree-box{
+    display:flex;
+    align-items:flex-start;
+    gap:.7rem;
+    padding:1rem 1.1rem;
+    background:rgba(34,197,94,.08);
+    border:1px solid rgba(34,197,94,.3);
+    border-radius:14px;
+    margin-bottom:1.4rem;
+    font-size:.9rem;
+}
+
+.agree-box input{ margin-top:.15rem; width:17px; height:17px; accent-color:var(--success); }
+
+#startBtn{
+    width:100%;
+    padding:1rem;
+    font-size:1.02rem;
+    border-radius:14px;
+}

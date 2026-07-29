@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <title>BugWar | Round 1</title>
+
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/quiz.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+<body class="quiz-body">
+
+<header class="topbar">
+
+    <div class="logo">🐞 BugWar</div>
+
+    <div class="round-title">Round 1 &middot; C Programming</div>
+
+    <div class="timer-box">
+        <i class="fa-solid fa-clock"></i>
+        <span id="timer">15:00</span>
+    </div>
+
+</header>
+
+<div class="quiz-container">
+
+    <!-- LEFT -->
+    <main class="content">
+
+        <div class="question-header">
+            <span id="questionType">Bug</span>
+            <h2 id="questionNo">Question 1 / 10</h2>
+        </div>
+
+        <h1 id="questionTitle"></h1>
+
+        <div class="code-editor">
+            <div class="editor-header"><span>Question Code</span></div>
+            <div class="code-body">
+                <div id="lineNumbers"></div>
+                <pre id="codeBox"></pre>
+            </div>
+        </div>
+
+        <div class="answer-area">
+            <div class="editor-container">
+                <div class="editor-header"><span>Your Answer</span></div>
+                <textarea
+                    id="answerInput"
+                    spellcheck="false"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    placeholder="Type your answer here..."></textarea>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button id="previousBtn">Previous</button>
+            <button id="nextBtn">Next</button>
+            <button id="submitBtn">Submit</button>
+        </div>
+
+    </main>
+
+    <!-- RIGHT -->
+    <aside class="sidebar">
+
+        <h3>Questions</h3>
+        <div id="palette"></div>
+
+        <div class="legend">
+            <div><span class="answered"></span> Answered</div>
+            <div><span class="current"></span> Current</div>
+            <div><span class="notanswered"></span> Not Answered</div>
+        </div>
+
+        <div class="progress-wrap">
+            <div class="progress-track"><div id="progressFill"></div></div>
+            <div class="progress-stats">
+                <span>Answered: <span id="answeredCount">0</span></span>
+                <span>Remaining: <span id="remainingCount">0</span></span>
+            </div>
+        </div>
+
+    </aside>
+
+</div>
+
+<!-- Review Modal -->
+<div id="reviewModal" class="modal">
+
+    <div class="modal-content">
+
+        <h2>Review Your Answers</h2>
+
+        <p>Answered: <strong id="reviewAnswered">0</strong></p>
+        <p>Remaining: <strong id="reviewRemaining">0</strong></p>
+
+        <h4>Unanswered Questions</h4>
+        <div id="reviewList"></div>
+
+        <div class="modal-buttons">
+            <button id="cancelSubmit">Go Back</button>
+            <button id="confirmSubmit">Submit Quiz</button>
+        </div>
+
+    </div>
+
+</div>
+<script src="js/security.js"></script>
+<script src="js/quiz.js"></script>
+
+</body>
+</html>

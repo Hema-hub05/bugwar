@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BugWar | Rules</title>
+
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/rules.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+<body>
+
+<div class="bw-bg" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<div class="rules-wrap">
+
+    <div class="rules-card bw-glass">
+
+        <a href="register.html" class="bw-back">
+            <i class="fa-solid fa-arrow-left"></i>
+            Back
+        </a>
+
+        <h1>📜 BugWar Rules</h1>
+        <p class="lead">Please read all the rules before starting the competition.</p>
+
+        <div class="rules-list">
+
+            <div class="rule">
+                <i class="fa-solid fa-users"></i>
+                <span>Exactly <strong>2 participants</strong> per team.</span>
+            </div>
+
+            <div class="rule">
+                <i class="fa-solid fa-user-lock"></i>
+                <span>Each team can sign in only once.</span>
+            </div>
+
+            <div class="rule">
+                <i class="fa-solid fa-layer-group"></i>
+                <span>The competition consists of <strong>3 rounds</strong>.</span>
+            </div>
+
+            <div class="rule">
+                <i class="fa-solid fa-circle-question"></i>
+                <span>Each round contains <strong>10 questions</strong>.</span>
+            </div>
+
+            <div class="rule">
+                <i class="fa-solid fa-clock"></i>
+                <span>Each round lasts <strong>15 minutes</strong>.</span>
+            </div>
+
+            <div class="rule">
+                <i class="fa-solid fa-unlock"></i>
+                <span>Score at least <strong>70%</strong> in Round 1 to unlock Round 2.</span>
+            </div>
+
+            <div class="rule">
+                <i class="fa-solid fa-expand"></i>
+                <span>The quiz must remain in <strong>full-screen mode</strong>.</span>
+            </div>
+
+            <div class="rule">
+                <i class="fa-solid fa-window-restore"></i>
+                <span>Leaving full-screen or switching tabs is monitored.</span>
+            </div>
+
+            <div class="rule">
+                <i class="fa-solid fa-ban"></i>
+                <span>Refreshing the page during the quiz is not allowed.</span>
+            </div>
+
+            <div class="rule">
+                <i class="fa-solid fa-trophy"></i>
+                <span>Organizer's decision will be final.</span>
+            </div>
+
+        </div>
+
+        <div class="agree-box">
+            <input type="checkbox" id="agreeRules">
+            <label for="agreeRules">
+                I have read and agree to all the BugWar rules.
+            </label>
+        </div>
+
+        <button id="startBtn" class="bw-btn bw-btn-primary" disabled>
+            🚀 Start Round 1
+        </button>
+
+    </div>
+
+</div>
+
+<script src="js/rules.js"></script>
+
+</body>
+</html>

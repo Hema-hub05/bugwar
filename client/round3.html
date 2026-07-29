@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>BugWar | Round 3</title>
+
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/round.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body class="round-body">
+
+<header class="topbar">
+
+    <div class="logo">
+        🐞 <span>BugWar</span>
+    </div>
+
+    <div class="round-title">
+        Round 3 · Programming Challenge
+    </div>
+
+    <div class="timer-box">
+        <i class="fa-solid fa-stopwatch"></i>
+        <span id="timer">10:00</span>
+    </div>
+
+</header>
+
+<div class="info-row">
+
+    <div class="info-card">
+        Question
+        <h2 id="questionNo">1 / 10</h2>
+    </div>
+
+    <div class="info-card">
+        Answered
+        <h2 id="answeredCount">0/10</h2>
+    </div>
+
+    <div class="info-card">
+        Status
+        <h2>Final Round</h2>
+    </div>
+
+</div>
+
+<div class="quiz-container">
+
+<div class="left-panel">
+
+<div class="progress">
+<div id="progressFill"></div>
+</div>
+
+<h2 id="questionTitle"></h2>
+
+
+<pre id="codeBox"></pre>
+
+<div class="editor-container">
+<div class="editor-header"><span>Your Answer</span></div>
+<textarea
+id="answerInput"
+class="answer-box"
+rows="10"
+placeholder="Write your answer here..."></textarea>
+</div>
+
+<div class="navigation">
+
+<button id="previousBtn">
+<i class="fa-solid fa-arrow-left"></i>
+Previous
+</button>
+
+<button id="nextBtn">
+Next
+<i class="fa-solid fa-arrow-right"></i>
+</button>
+
+<button id="submitBtn">
+<i class="fa-solid fa-paper-plane"></i>
+Submit
+</button>
+
+</div>
+
+</div>
+
+<div class="right-panel">
+
+<h3>Question Palette</h3>
+
+<div id="palette"></div>
+
+<div class="legend">
+
+<div>
+<span class="answered"></span>
+Answered
+</div>
+
+<div>
+<span class="current"></span>
+Current
+</div>
+
+<div>
+<span class="notanswered"></span>
+Not Answered
+</div>
+
+</div>
+
+</div>
+<script src="js/security.js"></script>
+<script src="js/round3.js"></script>
+
+</body>
+</html>

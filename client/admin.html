@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BugWar | Admin Command Center</title>
+
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/admin.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@700;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+<body>
+
+<div class="admin-shell">
+
+    <!-- ======================================================
+         SIDEBAR
+    ======================================================= -->
+    <aside class="sidebar-nav">
+
+        <div class="brand">🐞 BugWar Admin</div>
+
+        <ul class="menu">
+
+            <li data-page="dashboard" class="active">
+                <i class="fa-solid fa-gauge-high"></i> Dashboard
+            </li>
+
+            <li data-page="teams">
+                <i class="fa-solid fa-users"></i> Teams
+            </li>
+
+            <li data-page="questions">
+                <i class="fa-solid fa-code"></i> Questions
+            </li>
+
+            <li data-page="results">
+                <i class="fa-solid fa-file-lines"></i> Results
+            </li>
+
+            <li data-page="leaderboard">
+                <i class="fa-solid fa-ranking-star"></i> Leaderboard
+            </li>
+
+            <li data-page="settings">
+                <i class="fa-solid fa-gear"></i> Settings
+            </li>
+
+            <li class="danger" id="logoutBtn" onclick="document.getElementById('logoutModal').style.display='flex'">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <div>
+
+        <!-- ======================================================
+             TOP BAR
+        ======================================================= -->
+        <header class="admin-topbar">
+
+            <h2 id="pageTitle">Dashboard</h2>
+
+            <div class="status-pill">
+                <span class="status-dot"></span>
+                Server Online
+            </div>
+
+        </header>
+
+        <!-- ======================================================
+             MAIN CONTENT
+        ======================================================= -->
+        <main class="main-content">
+
+            <!-- DASHBOARD -->
+            <section id="dashboard" class="page section active">
+
+                <div class="dashboard-header">
+                    <h1>AI Command Center</h1>
+                    <p>Monitor BugWar Competition in Real Time</p>
+                </div>
+
+                <div class="dashboard-cards">
+
+                    <div class="card bw-glass">
+                        <div class="card-icon"><i class="fa-solid fa-users"></i></div>
+                        <div class="card-info">
+                            <h3>Total Teams</h3>
+                            <h1 id="totalTeams">0</h1>
+                            <span>Registered Teams</span>
+                        </div>
+                    </div>
+
+                    <div class="card bw-glass">
+                        <div class="card-icon"><i class="fa-solid fa-code"></i></div>
+                        <div class="card-info">
+                            <h3>Questions</h3>
+                            <h1 id="totalQuestions">0</h1>
+                            <span>Available Questions</span>
+                        </div>
+                    </div>
+
+                    <div class="card bw-glass">
+                        <div class="card-icon"><i class="fa-solid fa-circle-check"></i></div>
+                        <div class="card-info">
+                            <h3>Completed</h3>
+                            <h1 id="completedTeams">0</h1>
+                            <span>Quiz Completed</span>
+                        </div>
+                    </div>
+
+                    <div class="card bw-glass">
+                        <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
+                        <div class="card-info">
+                            <h3>Average Score</h3>
+                            <h1 id="averageScore">0%</h1>
+                            <span>Overall Performance</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- TEAMS -->
+            <section id="teams" class="page section">
+
+                <div class="section-header">
+                    <div>
+                        <h2>Registered Teams</h2>
+                        <p>Manage all participating teams</p>
+                    </div>
+
+                    <div class="section-actions">
+                        <input type="text" id="teamSearch" placeholder="Search Team..." class="search-box">
+                    </div>
+                </div>
+
+                <div class="glass-table bw-glass">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Team ID</th>
+                                <th>Team Name</th>
+                                <th>Member 1</th>
+                                <th>Member 2</th>
+                                <th>Department</th>
+                                <th>Year</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="teamTableBody"></tbody>
+                    </table>
+                </div>
+
+            </section>
+
+            <!-- QUESTIONS -->
+            <section id="questions" class="page section">
+
+                <div class="section-header">
+                    <div>
+                        <h2>Question Bank</h2>
+                        <p>Create and manage quiz questions</p>
+                    </div>
+
+                    <div class="section-actions">
+                        <button class="primary-btn" id="addQuestionBtn" onclick="openQuestionModal()">
+                            <i class="fa-solid fa-plus"></i> Add Question
+                        </button>
+                    </div>
+                </div>
+
+                <div class="glass-table bw-glass">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Round</th>
+                                <th>Language</th>
+                                <th>Question</th>
+                                <th>Code</th>
+                                <th>Answer</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="questionTableBody"></tbody>
+                    </table>
+                </div>
+
+            </section>
+
+            <!-- RESULTS -->
+            <section id="results" class="page section">
+
+                <div class="section-header">
+                    <div>
+                        <h2>Competition Results</h2>
+                        <p>View submitted quiz results</p>
+                    </div>
+                </div>
+
+                <div class="glass-table bw-glass">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Team</th>
+                                <th>Round</th>
+                                <th>Score</th>
+                                <th>Total</th>
+                                <th>Submitted</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultTableBody"></tbody>
+                    </table>
+                </div>
+
+            </section>
+
+            <!-- LEADERBOARD -->
+            <section id="leaderboard" class="page section">
+
+                <div class="section-header">
+                    <div>
+                        <h2>Leaderboard</h2>
+                        <p>Top Performing Teams</p>
+                    </div>
+                </div>
+
+                <div class="glass-table bw-glass">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Team</th>
+                                <th>Total Score</th>
+                                <th>Rounds</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboardTableBody"></tbody>
+                    </table>
+                </div>
+
+            </section>
+
+            <!-- SETTINGS -->
+            <section id="settings" class="page section">
+
+                <div class="section-header">
+                    <h2>Competition Settings</h2>
+                </div>
+
+                <div class="settings-grid">
+
+                    <div class="setting-card bw-glass">
+                        <i class="fa-solid fa-clock"></i>
+                        <h3>Round Duration</h3>
+                        <p>15 Minutes</p>
+                    </div>
+
+                    <div class="setting-card bw-glass">
+                        <i class="fa-solid fa-database"></i>
+                        <h3>Database</h3>
+                        <p id="databaseStatus">Connected</p>
+                    </div>
+
+                    <div class="setting-card bw-glass">
+                        <i class="fa-solid fa-server"></i>
+                        <h3>Server</h3>
+                        <p>Online</p>
+                    </div>
+
+                    <div class="setting-card bw-glass">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <h3>Security</h3>
+                        <p>Protected</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</div>
+
+<!-- ======================================================
+     QUESTION MODAL
+====================================================== -->
+<div class="modal" id="questionModal">
+
+    <div class="modal-content bw-glass">
+
+        <div class="modal-header">
+            <h2 id="modalTitle">Add Question</h2>
+            <button id="closeModal" onclick="closeQuestionModal()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+        <form id="questionForm">
+
+            <input type="hidden" id="questionId">
+
+            <div class="form-grid">
+
+                <select id="qRound">
+                    <option value="">Round</option>
+                    <option value="1">Round 1</option>
+                    <option value="2">Round 2</option>
+                    <option value="3">Round 3</option>
+                </select>
+
+                <input type="text" id="qLanguage" placeholder="Language">
+
+                <textarea id="qQuestion" rows="3" placeholder="Question"></textarea>
+                <textarea id="qCode" rows="6" placeholder="Code"></textarea>
+                <textarea id="qAnswer" rows="4" placeholder="Answer"></textarea>
+                <textarea id="qExplanation" rows="4" placeholder="Explanation"></textarea>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="secondary-btn" id="cancelBtn" onclick="closeQuestionModal()">Cancel</button>
+                <button type="button" class="primary-btn" onclick="saveQuestion()">Save Question</button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- ======================================================
+     LOGOUT MODAL
+====================================================== -->
+<div class="modal" id="logoutModal">
+
+    <div class="logout-box bw-glass">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <h2>Logout</h2>
+        <p>Are you sure you want to logout?</p>
+
+        <div class="logout-buttons">
+            <button class="secondary-btn" onclick="document.getElementById('logoutModal').style.display='none'">Cancel</button>
+            <button class="danger-btn" onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+</div>
+
+<div class="bw-bg" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<script src="js/admin.js"></script>
+
+</body>
+</html>

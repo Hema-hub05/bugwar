@@ -1,0 +1,61 @@
+/* =====================================================
+   BUGWAR 2026 — PUBLIC LEADERBOARD
+===================================================== */
+
+body.lb-body{
+    min-height:100vh;
+    padding:3rem 1.5rem;
+}
+
+.lb-wrap{
+    max-width:960px;
+    margin:0 auto;
+}
+
+.lb-header{
+    text-align:center;
+    margin-bottom:2rem;
+}
+
+.lb-header h1{
+    font-family:'Orbitron', sans-serif;
+    font-size:1.9rem;
+    margin-bottom:.5rem;
+}
+
+.lb-header p{ color:var(--muted); font-size:.92rem; }
+
+.lb-table-wrap{
+    padding:1.4rem;
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:640px;
+}
+
+thead th{
+    text-align:left;
+    font-size:.75rem;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    color:var(--muted);
+    padding:.9rem 1rem;
+    border-bottom:1px solid var(--border);
+}
+
+tbody td{
+    padding:.9rem 1rem;
+    font-size:.9rem;
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+tbody tr:hover{ background:rgba(79,124,255,.06); }
+
+tbody tr:first-child td{ color:#ffd166; font-weight:700; }
+tbody tr:nth-child(2) td{ color:#c0c0c0; font-weight:700; }
+tbody tr:nth-child(3) td{ color:#cd7f32; font-weight:700; }
+
+.lb-back{ display:flex; justify-content:center; margin-bottom:1.5rem; }

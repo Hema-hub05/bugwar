@@ -1,0 +1,266 @@
+/* =====================================================
+   BUGWAR 2026 — ROUND 2 / ROUND 3 (MCQ)
+===================================================== */
+
+html, body{ height:100%; }
+body.round-body{ display:flex; flex-direction:column; }
+
+.topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:1rem 1.75rem;
+    background:rgba(9,13,28,.9);
+    border-bottom:1px solid var(--border);
+    position:sticky;
+    top:0;
+    z-index:20;
+}
+
+.topbar .logo{
+    font-family:'Orbitron', sans-serif;
+    font-weight:800;
+    font-size:1.1rem;
+}
+
+.topbar .round-title{ font-weight:600; color:var(--text); font-size:.95rem; }
+
+.timer-box{
+    display:flex;
+    align-items:center;
+    gap:.5rem;
+    background:rgba(239,68,68,.12);
+    border:1px solid rgba(239,68,68,.35);
+    padding:.55rem 1.1rem;
+    border-radius:12px;
+    font-family:'Fira Code', monospace;
+    font-weight:600;
+    font-size:1.05rem;
+    color:#fca5a5;
+}
+
+/* info cards row */
+.info-row{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1rem;
+    padding:1.4rem 1.4rem 0;
+    max-width:1300px;
+    margin:0 auto;
+    width:100%;
+}
+
+.info-card{
+    background:rgba(16,24,47,.85);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:1rem 1.2rem;
+    font-size:.8rem;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:.04em;
+}
+
+.info-card h2{
+    font-size:1.4rem;
+    color:#fff;
+    margin-top:.3rem;
+    text-transform:none;
+    letter-spacing:0;
+    font-family:'Fira Code', monospace;
+}
+
+/* main layout */
+.quiz-container{
+    flex:1;
+    display:grid;
+    grid-template-columns:1fr 250px;
+    gap:1.4rem;
+    padding:1.4rem;
+    max-width:1300px;
+    margin:0 auto;
+    width:100%;
+}
+
+.left-panel{
+    background:rgba(16,24,47,.85);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:1.6rem 1.8rem;
+}
+
+.progress{
+    height:8px;
+    border-radius:99px;
+    background:rgba(255,255,255,.08);
+    overflow:hidden;
+    margin-bottom:1.2rem;
+}
+#progressFill{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg, var(--primary), var(--success));
+    transition:width .3s ease;
+}
+
+#questionTitle{ font-size:1.25rem; margin-bottom:1.1rem; line-height:1.5; }
+
+#codeBox{
+    display:block;
+    background:#0a0f22;
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:1rem 1.2rem;
+    font-family:'Fira Code', monospace;
+    font-size:.88rem;
+    line-height:1.6;
+    color:#c7d2fe;
+    white-space:pre-wrap;
+    overflow-x:auto;
+    margin-bottom:1.3rem;
+}
+
+.options{
+    display:flex;
+    flex-direction:column;
+    gap:.8rem;
+    margin-bottom:1.4rem;
+}
+
+.option{
+    display:flex;
+    align-items:center;
+    gap:.9rem;
+    padding:.9rem 1.1rem;
+    background:rgba(255,255,255,.04);
+    border:1px solid var(--border);
+    border-radius:12px;
+    cursor:pointer;
+    transition:var(--transition);
+    font-size:.92rem;
+}
+
+.option:hover{ background:rgba(79,124,255,.08); border-color:rgba(79,124,255,.3); }
+
+.option input[type="radio"]{
+    width:18px;
+    height:18px;
+    accent-color:var(--primary);
+    flex-shrink:0;
+}
+
+.option:has(input:checked){
+    background:rgba(79,124,255,.15);
+    border-color:var(--primary);
+}
+.editor-container{
+    border:1px solid var(--border);
+    border-radius:14px;
+    overflow:hidden;
+    margin-bottom:1.3rem;
+    background:#0a0f22;
+}
+
+.editor-header{
+    background:rgba(255,255,255,.05);
+    padding:.6rem 1rem;
+    font-size:.78rem;
+    color:var(--muted);
+    font-weight:600;
+    border-bottom:1px solid var(--border);
+}
+
+.answer-box{
+    width:100%;
+    min-height:130px;
+    padding:1rem 1.2rem;
+    background:transparent;
+    border:none;
+    color:var(--white);
+    font-family:'Fira Code', monospace;
+    font-size:.9rem;
+    resize:vertical;
+    display:block;
+}
+
+.answer-box:focus{ outline:none; }
+
+.navigation{
+    display:flex;
+    gap:.8rem;
+}
+
+.navigation button{
+    flex:1;
+    padding:.85rem 1rem;
+    border:none;
+    border-radius:12px;
+    font-weight:600;
+    cursor:pointer;
+    transition:var(--transition);
+}
+
+#previousBtn{ background:rgba(255,255,255,.06); color:var(--text); border:1px solid var(--border); }
+#previousBtn:hover{ background:rgba(255,255,255,.12); }
+
+#nextBtn{ background:linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; }
+#nextBtn:hover{ transform:translateY(-2px); }
+
+#submitBtn{ background:linear-gradient(135deg,#22c55e,#15803d); color:#fff; }
+#submitBtn:hover{ transform:translateY(-2px); }
+
+/* right panel / palette */
+.right-panel{
+    background:rgba(16,24,47,.85);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:1.2rem;
+    height:fit-content;
+    position:sticky;
+    top:90px;
+}
+
+.right-panel h3{
+    font-size:.85rem;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    color:var(--muted);
+    margin-bottom:.9rem;
+}
+
+#palette{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:.5rem;
+    margin-bottom:1.2rem;
+}
+
+#palette button{
+    aspect-ratio:1;
+    border:none;
+    border-radius:9px;
+    font-weight:700;
+    font-size:.85rem;
+    color:#fff;
+    cursor:pointer;
+    background:rgba(255,255,255,.08);
+    transition:var(--transition);
+}
+
+#palette button.current{ background:linear-gradient(135deg, var(--primary), var(--secondary)); box-shadow:0 0 0 2px #fff3; }
+#palette button.answered{ background:linear-gradient(135deg,#22c55e,#15803d); }
+#palette button.notanswered{ background:rgba(255,255,255,.08); }
+#palette button:hover{ transform:translateY(-2px); }
+
+.legend{ display:flex; flex-direction:column; gap:.5rem; font-size:.8rem; color:var(--muted); }
+.legend > div{ display:flex; align-items:center; gap:.5rem; }
+.legend span{ width:14px; height:14px; border-radius:4px; display:inline-block; }
+.legend .answered{ background:#22c55e; }
+.legend .current{ background:var(--primary); }
+.legend .notanswered{ background:rgba(255,255,255,.15); }
+
+@media (max-width:960px){
+    .quiz-container{ grid-template-columns:1fr; }
+    .right-panel{ position:static; }
+    .info-row{ grid-template-columns:1fr; }
+}
